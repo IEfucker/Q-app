@@ -1,0 +1,15 @@
+.contain{
+  height: 100vh;
+  justify-content: space-around;
+  padding:20vw;
+}
+.welcome{
+  width:100px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28px;
+}
+.start{
+  width: 100px;
+  margin: 0 auto
+}
