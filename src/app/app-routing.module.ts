@@ -9,8 +9,9 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: "welcome", component: WelcomeComponent },
-  { path: "description", component: DescriptionComponent },
-  {path: "q/:index", component: QSlideComponent },
+  { path: "welcome/:id", component: WelcomeComponent },
+  // { path: "description", component: DescriptionComponent },
+  {path: "test/:id/:index", component: QSlideComponent },
   { path: "**", component: PageNotFoundComponent }
 ]
 

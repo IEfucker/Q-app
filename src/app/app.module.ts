@@ -13,6 +13,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { ButtonModule } from 'primeng/primeng';
 
+import {TestService} from "./test.service"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,9 @@ import { ButtonModule } from 'primeng/primeng';
     // MultiSelectModule, 
     // ConfirmDialogModule 
   ],
-  providers: [],
+  providers: [
+    TestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
