@@ -1,6 +1,18 @@
-<div *ngFor="let q of questions;let i=index">
-  <div class="question">{{i+1}}. {{q.question}}</div>
-  <ul class="options">
-    <li class="opt" *ngFor="let opt of q.options"><input type="radio">A. {{opt}}</li>
-  </ul>
+<div class="slider">
+  <div class="slide-contain" [style.width]="containWidth" [style.transform]="translate">
+    <div class="slide " *ngFor="let q of questions;let i=index" [style.width]="slideWidth">
+      <div class="table-cell">
+        <div class="inner-cell">
+          <div class="question">{{i+1}}. {{q.question}}</div>
+          <ul class="options">
+            <li class="opt" *ngFor="let opt of q.options"><input type="radio">A. {{opt}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slider-control">
+  <button (click)="next($event)">确定</button>
 </div>
