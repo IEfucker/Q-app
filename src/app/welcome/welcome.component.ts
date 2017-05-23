@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ButtonModule} from "primeng/primeng"
 
 import {Router,ActivatedRoute,Params} from '@angular/router'
 

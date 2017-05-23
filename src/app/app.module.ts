@@ -12,7 +12,7 @@ import { DescriptionComponent } from './description/description.component';
 import { QSlideComponent } from './q-slide/q-slide.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { ButtonModule } from 'primeng/primeng';
+import { ButtonModule,RadioButtonModule } from 'primeng/primeng';
 
 import {TestService} from "./test.service"
 
@@ -30,6 +30,7 @@ import {TestService} from "./test.service"
     HttpModule,
     AppRoutingModule,
     ButtonModule,
+    RadioButtonModule
     // DataTableModule, 
     // MenubarModule, 
     // InputTextModule, 

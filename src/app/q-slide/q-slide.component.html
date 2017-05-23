@@ -1,18 +1,22 @@
-<div class="slider">
-  <div class="slide-contain" [style.width]="containWidth" [style.transform]="translate">
-    <div class="slide " *ngFor="let q of questions;let i=index" [style.width]="slideWidth">
-      <div class="table-cell">
-        <div class="inner-cell">
-          <div class="question">{{i+1}}. {{q.question}}</div>
-          <ul class="options">
-            <li class="opt" *ngFor="let opt of q.options"><input type="radio">A. {{opt}}</li>
-          </ul>
+<div class="wrap" [ngClass]="{ready:hasInit}">
+  <div class="slider">
+    <div class="slide-contain" [style.width]="containWidth" [style.transform]="translate" [style.transition]="transition">
+      <div class="slide " *ngFor="let q of questions;let i=index" [style.width]="slideWidth">
+        <div class="table-cell">
+          <div class="inner-cell">
+            <div class="question">{{i+1}}. {{q.question}}</div>
+            <ul class="options">
+              <li class="opt" *ngFor="let opt of q.options; let ii=index">
+                <p-radioButton name="g{{i}}" value="{{ii}}" label="{{opt}}" [(ngModel)]="chooseValues[i]"></p-radioButton>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="slider-control">
-  <button (click)="next($event)">确定</button>
+  <div class="slider-control">
+    <button class="start" type="button" (click)="next($event)" pButton label="确定"></button>
+  </div>
 </div>
