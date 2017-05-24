@@ -54,9 +54,11 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
         this.questions = test.questions
 
         let l = this.slideLength = this.questions.length
-        // set slide-contain width
-        this.containWidth = l * 100 + "%"
-        this.slideWidth = 100 / l + "%"
+        if (!this.hasInit) {
+          // set slide-contain width
+          this.containWidth = l * 100 + "%"
+          this.slideWidth = 100 / l + "%"
+        }
 
         let i = this.currentIndex
         let transLength = +this.slideWidth.replace("%", "")
@@ -70,17 +72,17 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
   ngAfterViewInit() {
     setTimeout(() => {
       this.hasInit = true
+      this.transition = "all 1000ms ease"
     }, 1000)
   }
   ngDoCheck() {
-    if (this.hasInit) this.transition = "all 1000ms ease"
   }
 
   next(e) {
     let i = this.currentIndex
     if (i === this.slideLength) return
     this.go(++this.currentIndex)
-    console.log(this.chooseValues)
+    // console.log(this.chooseValues)
   }
   prev(e) {
     let i = this.currentIndex
