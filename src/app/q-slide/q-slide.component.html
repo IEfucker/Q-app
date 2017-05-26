@@ -17,6 +17,6 @@
   </div>
 
   <div class="slider-control">
-    <button class="start" type="button" (click)="next($event)" pButton label="确定"></button>
+    <button class="start" type="button" (click)="next($event)" pButton label="确定" [disabled]="!activateNext"></button>
   </div>
 </div>

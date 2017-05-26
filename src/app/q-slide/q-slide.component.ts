@@ -31,6 +31,7 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
   private chooseValues: string[] = []
 
   private hasInit: boolean = false
+  private activateNext: boolean = false
 
   constructor(
     private testService: TestService,
@@ -63,6 +64,8 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
         let i = this.currentIndex
         let transLength = +this.slideWidth.replace("%", "")
         this.translate = `translate3d(-${(i - 1) * transLength}%, 0, 0)`
+        // reset next button
+        this.activateNext = false
 
       })
   }
@@ -76,11 +79,14 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
     }, 1000)
   }
   ngDoCheck() {
+    let i = this.currentIndex
+    if (this.chooseValues[i - 1]) this.activateNext = true
   }
 
   next(e) {
     let i = this.currentIndex
-    if (i === this.slideLength) return
+    // end this test
+    if (i === this.slideLength) return this.endTest()
     this.go(++this.currentIndex)
     // console.log(this.chooseValues)
   }
@@ -91,6 +97,26 @@ export class QSlideComponent implements OnInit, AfterViewInit, AfterContentInit,
   }
   go(index: number) {
     this.router.navigate([`/test/${this.id}/${index}`])
+  }
+
+  // post answer and go to end page
+  endTest() {
+    console.log(131111)
+    this.testService.postAnswer({
+      id: this.id,
+      answer: this.chooseValues,
+      // user time cost
+      timeCost: 100
+    })
+    .subscribe(d=>{
+      console.log(d)
+    })
+    
+
+
+    // todo: navigate to end page after server response in future, when user collection is added
+
+    return this.router.navigate([`/end/${this.id}`])
   }
 
 }

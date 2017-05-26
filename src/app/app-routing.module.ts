@@ -5,6 +5,7 @@ import { WelcomeComponent } from "./welcome/welcome.component"
 import { DescriptionComponent } from './description/description.component'
 import {QSlideComponent} from './q-slide/q-slide.component'
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component'
+import {EndComponent} from './end/end.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "welcome/:id", component: WelcomeComponent },
   // { path: "description", component: DescriptionComponent },
   {path: "test/:id/:index", component: QSlideComponent },
+  {path: "end/:id", component: EndComponent },
   { path: "**", component: PageNotFoundComponent }
 ]
 

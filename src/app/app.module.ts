@@ -14,7 +14,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { ButtonModule,RadioButtonModule } from 'primeng/primeng';
 
-import {TestService} from "./test.service"
+import {TestService} from "./test.service";
+import { EndComponent } from './end/end.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {TestService} from "./test.service"
     WelcomeComponent,
     DescriptionComponent,
     QSlideComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EndComponent,
   ],
   imports: [
     BrowserModule,

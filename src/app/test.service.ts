@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Test } from './test';
-import {Tag} from './tag'
+import { Tag } from './tag'
 
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
@@ -70,7 +70,19 @@ export class TestService {
     makeATest(tags: Tag[]): Observable<Test[]> {
         const url = `${this.host}${this.path}/qtest`
         let options = new RequestOptions({ headers: this.headers })
-        return this.http.post(url, {tags:tags}, options)
+        return this.http.post(url, { tags: tags }, options)
+            .map(this.extractData)
+            .catch(this.handleError)
+    }
+
+    postAnswer(answerAndId: any): Observable<any> {
+
+        let options = new RequestOptions({ headers: this.headers })
+        // let answer = answerAndId.answer,
+        //     id = answerAndId.id
+        const url = `${this.host}${this.path}/result`
+        console.log(url)
+        return this.http.post(url, answerAndId, options)
             .map(this.extractData)
             .catch(this.handleError)
     }
